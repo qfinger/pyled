@@ -25,7 +25,8 @@ while offspot >= 1:
         offspot += 1
         if offspot == 72:
                 break
-                
+          
+"""                
 ################
 ##PyEphem part##
 ################
@@ -55,7 +56,9 @@ def findmoons():
     now -= now % interval
 
 
-    """#prints characters relative to jupiter
+   
+    ###REMOPVED QUOTES
+    #prints characters relative to jupiter
     while True:
         t = now - 3
         print '------------------------'
@@ -73,7 +76,7 @@ def findmoons():
         print 'East is to the right;'
         print ', '.join([ '%s = %s' % (c, m.name) for m, c in moons ])
 
-    """
+     ###REMOPVED QUOTES
     #Shows offsets for every interval t
     zzz = 1
     for z in zzz:
