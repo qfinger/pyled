@@ -75,7 +75,8 @@ def findmoons():
 
     """
     #Shows offsets for every interval t
-    while True:
+    zzz = 1
+    for z in zzz:
         now = ephem.now()           #right now 
         now -= now % interval    
         t = now - 1
