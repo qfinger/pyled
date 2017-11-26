@@ -37,70 +37,6 @@ now = ephem.now()           #right now
 now -= now % interval
 
 
-#plot a line for each interval with moons at relative position to Jupiter
-"""#prints characters relative to jupiter
-while True:
-    t = now - 3             #period start
-    print '------------------------'
-
-    while t < now + 3:      #period end
-        line = [' '] * linelen
-        put(line, 'J', 0)
-        for moon, character in moons:
-            moon.compute(t)
-            put(line, character, moon.x)
-        #print str(ephem.date(t))[5:16], ''.join(line).rstrip()  #prints the line
-        t += interval
-        time.sleep(.1)
-
-    print 'East is to the right;'
-    print ', '.join([ '%s = %s' % (c, m.name) for m, c in moons ]) #prints name ID key
-
-"""
-#Determines relative positions of each moon to Jupiter at the center of linelen
-while True:
-    now = ephem.now()           #right now 
-    now -= now % interval       #not sure what this does
-    t = now - 1 
-    print '------------------------'
-    while t < now + 1:
-        line = [' '] * linelen
-        put(line, 'J', 0)
-        for moon, character in moons:
-            moon.compute(t)
-            put(line, character, moon.x)
-            readout = character, int(moon.x)
-            #print str(ephem.date(t))[5:16], readout 
-            
-
-            
-            for char in character:
-                print str(ephem.date(t))
-                if 'i' in character:
-                    iopos = int(moon.x)     #Io offset from Jupiter at time t
-                    print iopos             
-                elif 'e' in character:
-                    eurpos = int(moon.x)    #Europa offset
-                    print eurpos
-                elif 'g' in character:
-                    ganpos = int(moon.x)    #Ganymede offset
-                    print ganpos
-                elif 'c' in character:      #Calisto offset
-                    calpos = int(moon.x)
-                    print calpos
-                if t == now:
-                    print "\nCURRENT\n"     #<--convert to a superbrightness variable
-                elif t != now:
-                    print str(ephem.date(t))[5:16]
-                    
-                lightshow()
-
-        t += interval      
-        print '\n**************\n'
-        time.sleep(2)
-
-# To do: for each character at a given time, light the appropriate color LED at 36 + int(moon.x). Brightness += brightness until .75. If t == now, brightness == 1.0, time.sleep(3)
-
 ################
 #DotStar section------> Make a fuction, then call it after getting positions
 ################
@@ -164,4 +100,50 @@ def lightshow():
                 iospot = 0
             if(lastiospot >= numpixels):
                 lastiospot = 0
+
+
+#Determines relative positions of each moon to Jupiter at the center of linelen
+while True:
+    now = ephem.now()           #right now 
+    now -= now % interval       #not sure what this does
+    t = now - 1 
+    print '------------------------'
+    while t < now + 1:
+        line = [' '] * linelen
+        put(line, 'J', 0)
+        for moon, character in moons:
+            moon.compute(t)
+            put(line, character, moon.x)
+            readout = character, int(moon.x)
+            #print str(ephem.date(t))[5:16], readout 
+            
+
+            
+            for char in character:
+                print str(ephem.date(t))
+                if 'i' in character:
+                    iopos = int(moon.x)     #Io offset from Jupiter at time t
+                    print iopos             
+                elif 'e' in character:
+                    eurpos = int(moon.x)    #Europa offset
+                    print eurpos
+                elif 'g' in character:
+                    ganpos = int(moon.x)    #Ganymede offset
+                    print ganpos
+                elif 'c' in character:      #Calisto offset
+                    calpos = int(moon.x)
+                    print calpos
+                if t == now:
+                    print "\nCURRENT\n"     #<--convert to a superbrightness variable
+                elif t != now:
+                    print str(ephem.date(t))[5:16]
+                    
+                lightshow()
+
+        t += interval      
+        print '\n**************\n'
+        time.sleep(2)
+
+# To do: for each character at a given time, light the appropriate color LED at 36 + int(moon.x). Brightness += brightness until .75. If t == now, brightness == 1.0, time.sleep(3)
+
 
