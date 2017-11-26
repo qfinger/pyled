@@ -17,11 +17,9 @@ strip    = Adafruit_DotStar(numpixels, datapin, clockpin)
 strip.begin()           # Initialize pins for output
 strip.setBrightness(32) # Limit brightness to ~1/4 duty cycle
 
-#turn all black
-offspot = 1
+#turn all leds to black (off)
+offspot = 0
 offcolor = 0x000000
-while offspot >= 1:
+for nump in numpixels:
         strip.setPixelColor(offspot, offcolor)
         offspot += 1
-        if offspot == 72:
-                break
