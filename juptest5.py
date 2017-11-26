@@ -122,16 +122,17 @@ while offspot >= 1:
                 break
 
 
-jupspot  = maxradii           #jupiter position
-iospot = iopos             #Io position ------------->trying for just one moon
+jupspot  = 36           #jupiter position
+iospot = 1             #Io position ------------->trying for just one moon
 jupcolor = 0xFF8801     #jupiter color
 iocolor = 0x9932cc      #Io color
 lastiocolor = 0x000000
-lastiospot = (iospot - 1)
+#lastiospot = (iospot - 1)
 
 while True:                              # Loop forever
 
         findmoons()
+        iospot = iopos
         strip.setPixelColor(jupspot, jupcolor) # Turn on jupiter to orange
         strip.setPixelColor(iospot, 0) #Turn off last Io 
         #iospot += 1
