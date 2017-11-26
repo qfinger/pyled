@@ -20,6 +20,6 @@ strip.setBrightness(32) # Limit brightness to ~1/4 duty cycle
 #turn all leds to black (off)
 offspot = 0
 offcolor = 0x000000
-for nump in numpixels:
+for nump in str(numpixels):
         strip.setPixelColor(offspot, offcolor)
         offspot += 1
