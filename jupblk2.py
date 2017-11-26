@@ -1,7 +1,7 @@
-#!/usr/bin/env python2.7
-#Second try at combining pyephem and dotstar
 
-import ephem
+#!/usr/bin/python
+#Turn off all leds
+
 import time
 from dotstar import Adafruit_DotStar
 
@@ -18,8 +18,10 @@ strip.begin()           # Initialize pins for output
 strip.setBrightness(32) # Limit brightness to ~1/4 duty cycle
 
 #turn all leds to black (off)
-offspot = 0
+offspot = 1
 offcolor = 0x000000
-for nump in str(numpixels):
+nump = 73
+while offspot < nump:
         strip.setPixelColor(offspot, offcolor)
         offspot += 1
+        strip.show()
