@@ -75,74 +75,74 @@ while True:
                 elif t != now:
                     print str(ephem.date(t))[5:16]
                     
-    ################
-    #DotStar section------> Make a fuction, then call it after getting positions
-    ################
+                ################
+                #DotStar section------> Make a fuction, then call it after getting positions
+                ################
 
 
-    numpixels = 72 # Number of LEDs in strip
+                numpixels = 72 # Number of LEDs in strip
 
-    # Here's how to control the strip from any two GPIO pins:
-    datapin  = 23
-    clockpin = 24
-    strip    = Adafruit_DotStar(numpixels, datapin, clockpin)
+                # Here's how to control the strip from any two GPIO pins:
+                datapin  = 23
+                clockpin = 24
+                strip    = Adafruit_DotStar(numpixels, datapin, clockpin)
 
-    strip.begin()           # Initialize pins for output
-    strip.setBrightness(128) # Limit brightness to ~1/4 duty cycle
+                strip.begin()           # Initialize pins for output
+                strip.setBrightness(128) # Limit brightness to ~1/4 duty cycle
 
-    #First, turn all black
-    offspot = 1
-    offcolor = 0x000000
-    while offspot >= 1:
-            strip.setPixelColor(offspot, offcolor)
-            offspot += 1
-            if offspot == 72:
-                    break
+                #First, turn all black
+                offspot = 1
+                offcolor = 0x000000
+                while offspot >= 1:
+                        strip.setPixelColor(offspot, offcolor)
+                        offspot += 1
+                        if offspot == 72:
+                                break
 
-    #set initial spots and colors of Jupiter and moons
+                #set initial spots and colors of Jupiter and moons
 
-    jupspot  = 36           #jupiter position
-    jupcolor = 0xFF8801     #jupiter color
+                jupspot  = 36           #jupiter position
+                jupcolor = 0xFF8801     #jupiter color
 
-    iospot = iopos            #Io position
-    iocolor = 0x9932cc      #Io color
+                iospot = iopos            #Io position
+                iocolor = 0x9932cc      #Io color
 
-    eurspot = eurpos            #Europa position
-    eurcolor = 0x9932cc      #Europa color
+                eurspot = eurpos            #Europa position
+                eurcolor = 0x9932cc      #Europa color
 
-    ganspot = ganpos            #Ganymede position
-    gancolor = 0x9932cc      #Ganymede color
+                ganspot = ganpos            #Ganymede position
+                gancolor = 0x9932cc      #Ganymede color
 
-    calspot = calpos            #Calisto position
-    calcolor = 0x9932cc      #Calisto color
-
-
-    lastcolor = 0x000000
-    lastiospot = (iospot - 1)
-
-    gang = [iospot, eurspot, ganspot, calspot]      #list of the four moon positions
-
-    while True:                                     # Loop forever
-
-            strip.setBrightness(128)                # Limit brightness
-            strip.setPixelColor(jupspot, jupcolor)  # Turn on jupiter to orange
-            strip.setPixelColor(gang, 0)            #Turn off last plots 
-            gang[:] = [x + 1 for x in a]            # +=1 for each member of gang
-            strip.setPixelColor(gang, iocolor)      # Turn all moons to blue
-            strip.show()                            # Refresh strip
-            time.sleep(1.0 / 5)
-            if t == now:
-                strip.setBrightness(128)            #max brightness
-                time.sleep(3)
-            if (iospot >= numpixels):
-                iospot = 0
-            if(lastiospot >= numpixels):
-                lastiospot = 0
+                calspot = calpos            #Calisto position
+                calcolor = 0x9932cc      #Calisto color
 
 
-            t += interval      
-            print '\n**************\n'
-            time.sleep(2)
+                lastcolor = 0x000000
+                lastiospot = (iospot - 1)
+
+                gang = [iospot, eurspot, ganspot, calspot]      #list of the four moon positions
+
+                while True:                                     # Loop forever
+
+                        strip.setBrightness(128)                # Limit brightness
+                        strip.setPixelColor(jupspot, jupcolor)  # Turn on jupiter to orange
+                        strip.setPixelColor(gang, 0)            #Turn off last plots 
+                        gang[:] = [x + 1 for x in a]            # +=1 for each member of gang
+                        strip.setPixelColor(gang, iocolor)      # Turn all moons to blue
+                        strip.show()                            # Refresh strip
+                        time.sleep(1.0 / 5)
+                        if t == now:
+                            strip.setBrightness(128)            #max brightness
+                            time.sleep(3)
+                        if (iospot >= numpixels):
+                            iospot = 0
+                        if(lastiospot >= numpixels):
+                            lastiospot = 0
+
+
+                t += interval      
+                print '\n**************\n'
+                time.sleep(2)
 
 # To do: for each character at a given time, light the appropriate color LED at 36 + int(moon.x). Brightness += brightness until .75. If t == now, brightness == 1.0, time.sleep(3)
 
