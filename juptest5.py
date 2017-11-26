@@ -132,10 +132,9 @@ lastiocolor = 0x000000
 while True:                              # Loop forever
 
         findmoons()
-        iospot = iopos
         strip.setPixelColor(jupspot, jupcolor) # Turn on jupiter to orange
         strip.setPixelColor(iospot, 0) #Turn off last Io 
-        #iospot += 1
+        iospot = iopos
         strip.setPixelColor(iospot, iocolor) # Turn on Io  to blue
         strip.show()                     # Refresh strip
         time.sleep(1.0 / 5)
