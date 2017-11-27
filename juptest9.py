@@ -89,7 +89,7 @@ while abc <= 4:                 #run moon loop four times
 
                 jupspot  = 36           #jupiter position
                 iospot = iopos          #Io position
-                oldio = ipos -1
+                oldio = iopos -1
                 jupcolor = 0xFF8801     #jupiter color
                 iocolor = 0x9932cc      #Io color
                 
