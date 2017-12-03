@@ -52,6 +52,11 @@ now -= now % interval
 
 
 #Shows offsets for every interval t
+iopos = 0
+eurpos = 0
+ganpos = 0
+calpos = 0
+
 abc = 0
 while abc <= 4:                 #run moon loop four times
     now = ephem.now()           #right now 
