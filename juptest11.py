@@ -129,7 +129,7 @@ while abc <= 4:                 #run moon loop four times
                 
                 strip.setPixelColor(iospot, 0)   #Reset colors to black
                 strip.setPixelColor(eurspot, 0)
-                strip.setPixelColor(canspot, 0)
+                strip.setPixelColor(ganspot, 0)
                 strip.setPixelColor(calspot, 0)
                 
                 #time.sleep(1.0 / 5)
